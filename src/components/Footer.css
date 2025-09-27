@@ -35,6 +35,14 @@
   display: block;
 }
 
+.footer-logo .logo-image {
+  height: 140px;
+  width: auto;
+  object-fit: contain;
+  display: block;
+  margin-bottom: 15px;
+}
+
 .footer-tagline {
   color: #b3d9b3;
   line-height: 1.6;
