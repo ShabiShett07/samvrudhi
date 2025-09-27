@@ -36,7 +36,7 @@
 }
 
 .nav-logo .logo-image {
-  height: 200px;
+  height: 70px;
   width: auto;
   object-fit: contain;
   display: block;
@@ -141,7 +141,7 @@
   }
 
   .nav-logo .logo-image {
-    height: 150px;
+    height: 60px;
   }
 }
 
