@@ -155,14 +155,14 @@
     font-size: 18px;
   }
 
-  .nav-logo .logo-image {
-    height: 50px;
-    float: left;
-  }
-
   .btn-secondary,
   .btn-primary {
     padding: 6px 10px;
     font-size: 12px;
   }
 }
+
+.nav-logo .logo-image {
+    height: 50px;
+    float: left;
+  }
