@@ -30,7 +30,7 @@
 }
 
 .nav-logo .logo-image {
-  height: 120px;
+  height: 200px;
   width: auto;
   object-fit: contain;
   display: block;
@@ -129,14 +129,14 @@
   }
 
   .nav-logo .logo-image {
-    height: 90px;
+    height: 150px;
   }
 }
 
 @media (max-width: 480px) {
   .nav-container {
     padding: 0 10px;
-    height: 60px;
+    height: 100px;
   }
 
   .nav-logo .logo-text {
@@ -144,7 +144,7 @@
   }
 
   .nav-logo .logo-image {
-    height: 75px;
+    height: 120px;
   }
 
   .btn-secondary,
