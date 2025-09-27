@@ -118,6 +118,7 @@
   border: 2px solid #e8f5e8;
   border-radius: 12px;
   font-size: 1rem;
+  color: #333;
   background: rgba(255, 255, 255, 0.8);
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   box-sizing: border-box;
