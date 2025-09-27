@@ -48,6 +48,9 @@
   margin: 0;
   padding: 0;
   gap: 30px;
+  flex: 2;
+  justify-content: center;
+  align-items: center;
 }
 
 .nav-menu a {
@@ -64,6 +67,9 @@
 .nav-buttons {
   display: flex;
   gap: 15px;
+  flex: 1;
+  justify-content: flex-end;
+  align-items: center;
 }
 
 .btn-secondary {
