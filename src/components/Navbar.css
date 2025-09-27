@@ -157,6 +157,7 @@
 
   .nav-logo .logo-image {
     height: 50px;
+    float: left;
   }
 
   .btn-secondary,
