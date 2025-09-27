@@ -103,7 +103,7 @@
 }
 
 .service-checkbox input[type="checkbox"]:checked + label {
-  color: #667eea;
+  color: #4a7c59;
   font-weight: 500;
 }
 
@@ -134,8 +134,8 @@
 }
 
 .back-btn:hover {
-  border-color: #667eea;
-  color: #667eea;
+  border-color: #4a7c59;
+  color: #4a7c59;
 }
 
 .register-btn {
