@@ -137,7 +137,6 @@
 }
 
 .form-group input:focus,
-.form-group select:focus,
 .form-group textarea:focus {
   outline: none;
   border-color: #4a7c59;
@@ -146,6 +145,16 @@
     0 0 0 4px rgba(74, 124, 89, 0.1),
     0 8px 25px rgba(74, 124, 89, 0.15);
   transform: translateY(-2px);
+}
+
+.form-group select:focus {
+  outline: none;
+  border-color: #4a7c59;
+  background-color: rgba(255, 255, 255, 1);
+  box-shadow:
+    0 0 0 4px rgba(74, 124, 89, 0.1),
+    0 4px 15px rgba(74, 124, 89, 0.15);
+  background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="%232d5a27" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6,9 12,15 18,9"></polyline></svg>');
 }
 
 .form-group input:hover,
@@ -160,9 +169,6 @@
   background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="%234a7c59" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6,9 12,15 18,9"></polyline></svg>');
 }
 
-.form-group select:focus {
-  background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="%232d5a27" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6,9 12,15 18,9"></polyline></svg>');
-}
 
 /* Enhanced dropdown option styling */
 .form-group select option {
