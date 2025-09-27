@@ -143,6 +143,10 @@
     font-size: 18px;
   }
 
+  .nav-logo .logo-image {
+    height: 35px;
+  }
+
   .btn-secondary,
   .btn-primary {
     padding: 6px 10px;
