@@ -7,7 +7,7 @@ const Footer = () => {
         <div className="footer-content">
           <div className="footer-section">
             <div className="footer-logo">
-              <img src="/src/assets/logo.png" alt="Samvrudhi" className="logo-image" />
+              <img src="/logo.png" alt="Samvrudhi" className="logo-image" />
               <p className="footer-tagline">
                 Connecting landowners with skilled professionals for exceptional land management services.
               </p>
