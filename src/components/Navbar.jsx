@@ -5,7 +5,7 @@ const Navbar = ({ onRegisterClick }) => {
     <nav className="navbar">
       <div className="nav-container">
         <div className="nav-logo">
-          <img src="/src/assets/logo.png" alt="Samvrudhi" className="logo-image" />
+          <img src="/logo.png" alt="Samvrudhi" className="logo-image" />
         </div>
         <ul className="nav-menu">
           <li><a href="#home">Home</a></li>
