@@ -25,9 +25,7 @@
 .nav-logo {
   display: flex;
   align-items: center;
-  justify-content: flex-start;
-  flex: 0 0 auto;
-  margin-right: auto;
+  flex: 1;
 }
 
 .nav-logo .logo-text {
