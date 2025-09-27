@@ -210,6 +210,10 @@
     font-size: 1.1rem;
   }
 
+  .footer-logo .logo-image {
+    height: 60px;
+  }
+
   .footer-links a,
   .contact-item {
     font-size: 0.9rem;
@@ -233,6 +237,10 @@
 
   .footer-logo .logo-text {
     font-size: 20px;
+  }
+
+  .footer-logo .logo-image {
+    height: 50px;
   }
 
   .footer-tagline {
