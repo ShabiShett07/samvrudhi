@@ -18,7 +18,8 @@ if [[ -n $(git status --porcelain) ]]; then
     git push origin main
 
     echo "✅ Changes pushed! Vercel will automatically deploy."
-    echo "🌐 Check your deployment at: https://your-vercel-domain.vercel.app"
+    echo "🌐 Check your deployment at: https://github.com/ShabiShett07/samvrudhi"
+    echo "📱 Vercel will auto-deploy from GitHub commits"
 else
     echo "✨ No changes detected."
 fi
