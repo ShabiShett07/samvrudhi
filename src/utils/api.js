@@ -130,6 +130,16 @@ export const userAPI = {
       body: JSON.stringify(updates),
     });
   },
+
+  // Temporary function to view registered users (localStorage)
+  getAllUsers: () => {
+    return JSON.parse(localStorage.getItem('registeredUsers') || '[]');
+  },
+
+  // Clear all temporary user data
+  clearAllUsers: () => {
+    localStorage.removeItem('registeredUsers');
+  }
 };
 
 // Auth token management
