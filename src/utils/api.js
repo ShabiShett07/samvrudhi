@@ -13,47 +13,12 @@ class APIError extends Error {
 }
 
 async function makeRequest(endpoint, options = {}) {
-  const url = `${API_BASE_URL}${endpoint}`;
-
-  const config = {
-    headers: {
-      'Content-Type': 'application/json',
-      ...options.headers,
-    },
-    ...options,
-  };
-
-  // Add auth token if available
-  const token = localStorage.getItem('authToken');
-  if (token) {
-    config.headers.Authorization = `Bearer ${token}`;
-  }
-
-  try {
-    const response = await fetch(url, config);
-    const data = await response.json();
-
-    if (!response.ok) {
-      throw new APIError(
-        data.error || 'An error occurred',
-        response.status,
-        data
-      );
-    }
-
-    return data;
-  } catch (error) {
-    if (error instanceof APIError) {
-      throw error;
-    }
-
-    // Network or parsing error
-    throw new APIError(
-      'Network error. Please check your connection.',
-      0,
-      null
-    );
-  }
+  // API is temporarily disabled - always throw error to trigger localStorage fallback
+  throw new APIError(
+    'API temporarily disabled - using localStorage',
+    0,
+    null
+  );
 }
 
 // Auth API functions
@@ -103,33 +68,26 @@ export const authAPI = {
   },
 
   login: async (credentials) => {
-    return makeRequest('/auth/login', {
-      method: 'POST',
-      body: JSON.stringify(credentials),
-    });
+    // Login not implemented with localStorage yet
+    throw new APIError('Login feature coming soon!', 501, null);
   },
 };
 
 // Database initialization (admin function)
 export const adminAPI = {
   initializeDatabase: async () => {
-    return makeRequest('/init-db', {
-      method: 'POST',
-    });
+    throw new APIError('Database initialization not available in localStorage mode', 501, null);
   },
 };
 
 // User management
 export const userAPI = {
   getProfile: async () => {
-    return makeRequest('/user/profile');
+    throw new APIError('User profile not available in localStorage mode', 501, null);
   },
 
   updateProfile: async (updates) => {
-    return makeRequest('/user/profile', {
-      method: 'PUT',
-      body: JSON.stringify(updates),
-    });
+    throw new APIError('Profile updates not available in localStorage mode', 501, null);
   },
 
   // Temporary function to view registered users (localStorage)
