@@ -1,8 +1,8 @@
-const { sql } = require('@vercel/postgres');
-const bcrypt = require('bcryptjs');
-const jwt = require('jsonwebtoken');
+import { sql } from '@vercel/postgres';
+import bcrypt from 'bcryptjs';
+import jwt from 'jsonwebtoken';
 
-module.exports = async function handler(request, response) {
+export default async function handler(request, response) {
   // Enable CORS
   response.setHeader('Access-Control-Allow-Origin', '*');
   response.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');

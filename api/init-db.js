@@ -1,6 +1,6 @@
-const { sql } = require('@vercel/postgres');
+import { sql } from '@vercel/postgres';
 
-module.exports = async function handler(request, response) {
+export default async function handler(request, response) {
   if (request.method !== 'POST') {
     return response.status(405).json({ error: 'Method not allowed' });
   }
