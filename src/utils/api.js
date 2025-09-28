@@ -1,8 +1,7 @@
 // API utility functions for Vercel integration
 
-const API_BASE_URL = process.env.NODE_ENV === 'production'
-  ? 'https://samvrudhi.vercel.app/api'
-  : 'http://localhost:3000/api';
+// Temporarily disable API calls - use localStorage only
+const API_BASE_URL = 'DISABLED_API';
 
 class APIError extends Error {
   constructor(message, status, response) {
@@ -60,55 +59,47 @@ async function makeRequest(endpoint, options = {}) {
 // Auth API functions
 export const authAPI = {
   register: async (userData) => {
-    // Try API first, fallback to localStorage if it fails
-    try {
-      return await makeRequest('/auth/register', {
-        method: 'POST',
-        body: JSON.stringify(userData),
-      });
-    } catch (error) {
-      console.log('API failed, using localStorage fallback:', error.message);
+    // Use localStorage only for now - API is being fixed
+    console.log('Using localStorage registration (API temporarily disabled)');
 
-      // Fallback to localStorage when API fails
-      await new Promise(resolve => setTimeout(resolve, 1000)); // Simulate API delay
+    await new Promise(resolve => setTimeout(resolve, 1000)); // Simulate API delay
 
-      // Save user data to localStorage temporarily
-      const users = JSON.parse(localStorage.getItem('registeredUsers') || '[]');
-      const existingUser = users.find(user => user.email === userData.email);
+    // Save user data to localStorage
+    const users = JSON.parse(localStorage.getItem('registeredUsers') || '[]');
+    const existingUser = users.find(user => user.email === userData.email);
 
-      if (existingUser) {
-        throw new APIError('User already exists with this email', 409, null);
-      }
-
-      const newUser = {
-        id: Date.now(),
-        email: userData.email,
-        userType: userData.userType,
-        firstName: userData.firstName,
-        lastName: userData.lastName,
-        createdAt: new Date().toISOString(),
-        ...userData
-      };
-
-      users.push(newUser);
-      localStorage.setItem('registeredUsers', JSON.stringify(users));
-
-      // Generate a mock token
-      const token = `mock_token_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`;
-
-      return {
-        message: 'User registered successfully (stored locally)',
-        user: {
-          id: newUser.id,
-          email: newUser.email,
-          userType: newUser.userType,
-          firstName: newUser.firstName,
-          lastName: newUser.lastName,
-          createdAt: newUser.createdAt
-        },
-        token
-      };
+    if (existingUser) {
+      throw new APIError('User already exists with this email', 409, null);
     }
+
+    const newUser = {
+      id: Date.now(),
+      email: userData.email,
+      userType: userData.userType,
+      firstName: userData.firstName,
+      lastName: userData.lastName,
+      createdAt: new Date().toISOString(),
+      ...userData
+    };
+
+    users.push(newUser);
+    localStorage.setItem('registeredUsers', JSON.stringify(users));
+
+    // Generate a mock token
+    const token = `mock_token_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`;
+
+    return {
+      message: 'User registered successfully!',
+      user: {
+        id: newUser.id,
+        email: newUser.email,
+        userType: newUser.userType,
+        firstName: newUser.firstName,
+        lastName: newUser.lastName,
+        createdAt: newUser.createdAt
+      },
+      token
+    };
   },
 
   login: async (credentials) => {
