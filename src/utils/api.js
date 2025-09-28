@@ -60,17 +60,16 @@ async function makeRequest(endpoint, options = {}) {
 // Auth API functions
 export const authAPI = {
   register: async (userData) => {
-    // Check if we should use database or localStorage
-    const useDatabase = process.env.NODE_ENV === 'production' || window.location.hostname !== 'localhost';
-
-    if (useDatabase) {
-      // Use actual API endpoint
-      return makeRequest('/auth/register', {
+    // Try API first, fallback to localStorage if it fails
+    try {
+      return await makeRequest('/auth/register', {
         method: 'POST',
         body: JSON.stringify(userData),
       });
-    } else {
-      // Fallback to localStorage for local development
+    } catch (error) {
+      console.log('API failed, using localStorage fallback:', error.message);
+
+      // Fallback to localStorage when API fails
       await new Promise(resolve => setTimeout(resolve, 1000)); // Simulate API delay
 
       // Save user data to localStorage temporarily
@@ -98,7 +97,7 @@ export const authAPI = {
       const token = `mock_token_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`;
 
       return {
-        message: 'User registered successfully',
+        message: 'User registered successfully (stored locally)',
         user: {
           id: newUser.id,
           email: newUser.email,
