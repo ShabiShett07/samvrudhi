@@ -62,6 +62,10 @@
   cursor: pointer;
   transition: all 0.3s ease;
   box-shadow: 0 4px 15px rgba(45, 90, 39, 0.3);
+  min-height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .btn-hero-primary:hover {
@@ -80,6 +84,10 @@
   border-radius: 30px;
   cursor: pointer;
   transition: all 0.3s ease;
+  min-height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .btn-hero-secondary:hover {
