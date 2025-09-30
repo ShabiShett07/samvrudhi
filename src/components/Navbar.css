@@ -12,7 +12,8 @@
 
 .nav-container {
   max-width: 1200px;
-  margin: 0 15px;
+  margin: 0 auto;
+  padding: 0 15px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -117,10 +118,12 @@
   .nav-container {
     width: 100%;
     max-width: 100%;
+    padding: 0 10px;
   }
 
   .nav-buttons {
-    gap: 8px;
+    gap: 6px;
+    flex-shrink: 0;
   }
 
   .btn-secondary,
@@ -128,6 +131,7 @@
     padding: 8px 12px;
     font-size: 13px;
     white-space: nowrap;
+    min-width: auto;
   }
 
   .nav-logo .logo-text {
@@ -137,24 +141,61 @@
   .nav-logo .logo-image {
     height: 60px;
   }
+
+  .nav-logo {
+    flex-shrink: 1;
+    min-width: 0;
+  }
 }
 
 @media (max-width: 480px) {
   .nav-container {
     height: 70px;
+    padding: 0 8px;
   }
 
   .nav-logo .logo-text {
-    font-size: 18px;
+    font-size: 16px;
   }
 
   .nav-logo .logo-image {
-    height: 50px;
+    height: 45px;
+  }
+
+  .nav-buttons {
+    gap: 4px;
   }
 
   .btn-secondary,
   .btn-primary {
-    padding: 6px 10px;
-    font-size: 12px;
+    padding: 6px 8px;
+    font-size: 11px;
+    border-radius: 20px;
+  }
+
+  .nav-logo {
+    max-width: 60%;
+    overflow: hidden;
+  }
+}
+
+@media (max-width: 360px) {
+  .nav-container {
+    padding: 0 5px;
+  }
+
+  .nav-logo .logo-image {
+    height: 40px;
+  }
+
+  .btn-secondary,
+  .btn-primary {
+    padding: 5px 6px;
+    font-size: 10px;
+    border-radius: 15px;
+  }
+
+  .nav-logo {
+    max-width: 55%;
   }
 }
