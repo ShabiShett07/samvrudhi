@@ -65,6 +65,9 @@ const Services = () => {
             </div>
           ))}
         </div>
+        <div className="services-footer">
+          <button className="view-more-button">View More Services</button>
+        </div>
       </div>
     </section>
   )
