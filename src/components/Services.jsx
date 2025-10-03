@@ -1,6 +1,6 @@
 import './Services.css'
 
-const Services = () => {
+const Services = ({ onFindWorkers }) => {
   const services = [
     {
       icon: '🌱',
@@ -61,12 +61,12 @@ const Services = () => {
                   <li key={idx}>✓ {feature}</li>
                 ))}
               </ul>
-              <button className="service-button">Find Workers</button>
+              <button className="service-button" onClick={onFindWorkers}>Find Workers</button>
             </div>
           ))}
         </div>
         <div className="services-footer">
-          <button className="view-more-button">View More Services</button>
+          <button className="view-more-button" onClick={onFindWorkers}>View More Services</button>
         </div>
       </div>
     </section>

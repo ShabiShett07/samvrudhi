@@ -1,6 +1,6 @@
 import './Hero.css'
 
-const Hero = () => {
+const Hero = ({ onFindWorkers }) => {
   return (
     <section id="home" className="hero">
       <div className="hero-container">
@@ -13,7 +13,7 @@ const Hero = () => {
             From soil preparation to harvesting, find the right worker for every job.
           </p>
           <div className="hero-buttons">
-            <button className="btn-hero-primary">Find Workers</button>
+            <button className="btn-hero-primary" onClick={onFindWorkers}>Find Workers</button>
             <button className="btn-hero-secondary">Learn More</button>
           </div>
           <div className="hero-features">

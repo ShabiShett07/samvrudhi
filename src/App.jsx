@@ -10,6 +10,7 @@ import LandlordRegistration from './components/LandlordRegistration'
 import WorkerRegistration from './components/WorkerRegistration'
 import LandlordDashboard from './components/LandlordDashboard'
 import WorkerDashboard from './components/WorkerDashboard'
+import FindWorkers from './components/FindWorkers'
 import { tokenManager } from './utils/api'
 
 function App() {
@@ -67,6 +68,24 @@ function App() {
     setCurrentView('home')
   }
 
+  const handleFindWorkers = () => {
+    setCurrentView('findWorkers')
+  }
+
+  const handleBackFromFindWorkers = () => {
+    setCurrentView('home')
+  }
+
+  if (currentView === 'findWorkers') {
+    return (
+      <>
+        <Navbar onRegisterClick={handleRegisterClick} isAuthenticated={isAuthenticated} onLogout={handleLogout} user={user} />
+        <FindWorkers onBack={handleBackFromFindWorkers} />
+        <Footer />
+      </>
+    )
+  }
+
   if (currentView === 'userTypeSelection') {
     return (
       <UserTypeSelection
@@ -100,7 +119,7 @@ function App() {
       return (
         <>
           <Navbar onRegisterClick={handleRegisterClick} isAuthenticated={true} onLogout={handleLogout} user={user} />
-          <LandlordDashboard user={user} onLogout={handleLogout} />
+          <LandlordDashboard user={user} onLogout={handleLogout} onFindWorkers={handleFindWorkers} />
           <Footer />
         </>
       )
@@ -118,8 +137,8 @@ function App() {
   return (
     <div className="App">
       <Navbar onRegisterClick={handleRegisterClick} />
-      <Hero />
-      <Services />
+      <Hero onFindWorkers={handleFindWorkers} />
+      <Services onFindWorkers={handleFindWorkers} />
       <Features />
       <Footer />
     </div>

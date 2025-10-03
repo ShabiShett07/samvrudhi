@@ -1,0 +1,198 @@
+.worker-card {
+  background: white;
+  border-radius: 15px;
+  padding: 25px;
+  box-shadow: 0 4px 15px rgba(45, 90, 39, 0.1);
+  transition: all 0.3s ease;
+  border: 1px solid #e5f3e5;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.worker-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(45, 90, 39, 0.15);
+}
+
+.worker-card-header {
+  display: flex;
+  align-items: flex-start;
+  gap: 15px;
+  position: relative;
+}
+
+.worker-avatar {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #2d5a27 0%, #4a7c59 100%);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.3rem;
+  font-weight: bold;
+  flex-shrink: 0;
+}
+
+.worker-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.worker-name {
+  font-size: 1.3rem;
+  color: #1a1a1a;
+  margin: 0 0 8px 0;
+  font-weight: 600;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.worker-rating {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.95rem;
+}
+
+.rating-stars {
+  color: #2d5a27;
+  font-weight: 600;
+}
+
+.total-jobs {
+  color: #666;
+}
+
+.experience-badge {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.worker-services {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.service-badge {
+  background: #e8f5e8;
+  color: #2d5a27;
+  padding: 6px 14px;
+  border-radius: 15px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  border: 1px solid #d0e8d0;
+}
+
+.worker-details {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 15px 0;
+  border-top: 1px solid #f0f0f0;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.detail-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 0.95rem;
+  color: #333;
+}
+
+.detail-icon {
+  font-size: 1.1rem;
+  flex-shrink: 0;
+}
+
+.detail-text {
+  line-height: 1.5;
+  word-break: break-word;
+}
+
+.worker-card-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
+}
+
+.hourly-rate {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.rate-label {
+  font-size: 0.85rem;
+  color: #666;
+  font-weight: 500;
+}
+
+.rate-value {
+  font-size: 1.4rem;
+  color: #2d5a27;
+  font-weight: bold;
+}
+
+.hire-button {
+  background: linear-gradient(135deg, #2d5a27 0%, #4a7c59 100%);
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 25px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 0.95rem;
+  white-space: nowrap;
+}
+
+.hire-button:hover {
+  background: linear-gradient(135deg, #1e3a19 0%, #2d5a27 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(45, 90, 39, 0.3);
+}
+
+@media (max-width: 480px) {
+  .worker-card {
+    padding: 20px;
+  }
+
+  .worker-avatar {
+    width: 50px;
+    height: 50px;
+    font-size: 1.1rem;
+  }
+
+  .worker-name {
+    font-size: 1.1rem;
+  }
+
+  .worker-card-footer {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .hire-button {
+    width: 100%;
+  }
+
+  .rate-value {
+    font-size: 1.2rem;
+  }
+}

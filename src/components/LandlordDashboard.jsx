@@ -1,6 +1,6 @@
 import './Dashboard.css'
 
-const LandlordDashboard = ({ user, onLogout }) => {
+const LandlordDashboard = ({ user, onLogout, onFindWorkers }) => {
   return (
     <div className="dashboard">
       <div className="dashboard-header">
@@ -20,7 +20,7 @@ const LandlordDashboard = ({ user, onLogout }) => {
           <div className="card-icon">👷</div>
           <h3>Active Workers</h3>
           <p className="card-value">0</p>
-          <button className="card-button">Find Workers</button>
+          <button className="card-button" onClick={onFindWorkers}>Find Workers</button>
         </div>
 
         <div className="dashboard-card">
@@ -41,7 +41,7 @@ const LandlordDashboard = ({ user, onLogout }) => {
       <div className="quick-actions">
         <h2>Quick Actions</h2>
         <div className="action-buttons">
-          <button className="action-btn primary">
+          <button className="action-btn primary" onClick={onFindWorkers}>
             <span className="action-icon">🔍</span>
             Find Workers
           </button>
