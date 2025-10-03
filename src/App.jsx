@@ -88,51 +88,59 @@ function App() {
   }
 
   const handleServicesClick = () => {
-    setCurrentView('home')
-    setSelectedService(null)
-    setSelectedUserType(null)
+    if (currentView !== 'home') {
+      setCurrentView('home')
+      setSelectedService(null)
+      setSelectedUserType(null)
+    }
     setTimeout(() => {
       const servicesSection = document.getElementById('services')
       if (servicesSection) {
         servicesSection.scrollIntoView({ behavior: 'smooth' })
       }
-    }, 100)
+    }, currentView !== 'home' ? 100 : 0)
   }
 
   const handleFeaturesClick = () => {
-    setCurrentView('home')
-    setSelectedService(null)
-    setSelectedUserType(null)
+    if (currentView !== 'home') {
+      setCurrentView('home')
+      setSelectedService(null)
+      setSelectedUserType(null)
+    }
     setTimeout(() => {
       const featuresSection = document.getElementById('features')
       if (featuresSection) {
         featuresSection.scrollIntoView({ behavior: 'smooth' })
       }
-    }, 100)
+    }, currentView !== 'home' ? 100 : 0)
   }
 
   const handleAboutClick = () => {
-    setCurrentView('home')
-    setSelectedService(null)
-    setSelectedUserType(null)
+    if (currentView !== 'home') {
+      setCurrentView('home')
+      setSelectedService(null)
+      setSelectedUserType(null)
+    }
     setTimeout(() => {
       const aboutSection = document.getElementById('about')
       if (aboutSection) {
         aboutSection.scrollIntoView({ behavior: 'smooth' })
       }
-    }, 100)
+    }, currentView !== 'home' ? 100 : 0)
   }
 
   const handleContactClick = () => {
-    setCurrentView('home')
-    setSelectedService(null)
-    setSelectedUserType(null)
+    if (currentView !== 'home') {
+      setCurrentView('home')
+      setSelectedService(null)
+      setSelectedUserType(null)
+    }
     setTimeout(() => {
       const contactSection = document.getElementById('contact')
       if (contactSection) {
         contactSection.scrollIntoView({ behavior: 'smooth' })
       }
-    }, 100)
+    }, currentView !== 'home' ? 100 : 0)
   }
 
   if (currentView === 'findWorkers') {
