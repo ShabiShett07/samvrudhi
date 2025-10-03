@@ -1,6 +1,6 @@
 import './Navbar.css'
 
-const Navbar = ({ onRegisterClick, isAuthenticated, onLogout, user, onLogoClick, onServicesClick, onFeaturesClick, onAboutClick, onContactClick }) => {
+const Navbar = ({ onRegisterClick, onLoginClick, isAuthenticated, onLogout, user, onLogoClick, onServicesClick, onFeaturesClick, onAboutClick, onContactClick }) => {
   const handleServicesClick = (e) => {
     e.preventDefault()
     if (onServicesClick) {
@@ -70,7 +70,7 @@ const Navbar = ({ onRegisterClick, isAuthenticated, onLogout, user, onLogoClick,
             </>
           ) : (
             <>
-              <button className="btn-secondary">Login</button>
+              <button className="btn-secondary" onClick={onLoginClick}>Login</button>
               <button className="btn-primary" onClick={onRegisterClick}>Register</button>
             </>
           )}

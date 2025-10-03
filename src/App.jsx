@@ -13,6 +13,7 @@ import WorkerRegistration from './components/WorkerRegistration'
 import LandlordDashboard from './components/LandlordDashboard'
 import WorkerDashboard from './components/WorkerDashboard'
 import FindWorkers from './components/FindWorkers'
+import Login from './components/Login'
 import { tokenManager } from './utils/api'
 
 function App() {
@@ -40,6 +41,10 @@ function App() {
     setCurrentView('userTypeSelection')
   }
 
+  const handleLoginClick = () => {
+    setCurrentView('login')
+  }
+
   const handleUserTypeSelect = (userType) => {
     setSelectedUserType(userType)
     setCurrentView('registration')
@@ -48,6 +53,16 @@ function App() {
   const handleBackToHome = () => {
     setCurrentView('home')
     setSelectedUserType(null)
+  }
+
+  const handleBackFromLogin = () => {
+    setCurrentView('home')
+  }
+
+  const handleLogin = (userData) => {
+    setUser(userData)
+    setIsAuthenticated(true)
+    setCurrentView('home')
   }
 
   const handleBackToSelection = () => {
@@ -143,11 +158,16 @@ function App() {
     }, currentView !== 'home' ? 100 : 0)
   }
 
+  if (currentView === 'login') {
+    return <Login onBack={handleBackFromLogin} onLogin={handleLogin} />
+  }
+
   if (currentView === 'findWorkers') {
     return (
       <>
         <Navbar
           onRegisterClick={handleRegisterClick}
+          onLoginClick={handleLoginClick}
           isAuthenticated={isAuthenticated}
           onLogout={handleLogout}
           user={user}
@@ -197,6 +217,7 @@ function App() {
         <>
           <Navbar
             onRegisterClick={handleRegisterClick}
+            onLoginClick={handleLoginClick}
             isAuthenticated={true}
             onLogout={handleLogout}
             user={user}
@@ -215,6 +236,7 @@ function App() {
         <>
           <Navbar
             onRegisterClick={handleRegisterClick}
+            onLoginClick={handleLoginClick}
             isAuthenticated={true}
             onLogout={handleLogout}
             user={user}
@@ -235,6 +257,7 @@ function App() {
     <div className="App">
       <Navbar
         onRegisterClick={handleRegisterClick}
+        onLoginClick={handleLoginClick}
         onLogoClick={handleLogoClick}
         onServicesClick={handleServicesClick}
         onFeaturesClick={handleFeaturesClick}
