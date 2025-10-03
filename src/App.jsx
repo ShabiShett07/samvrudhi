@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import './App.css'
 import Navbar from './components/Navbar'
 import Hero from './components/Hero'
@@ -8,10 +8,29 @@ import Footer from './components/Footer'
 import UserTypeSelection from './components/UserTypeSelection'
 import LandlordRegistration from './components/LandlordRegistration'
 import WorkerRegistration from './components/WorkerRegistration'
+import LandlordDashboard from './components/LandlordDashboard'
+import WorkerDashboard from './components/WorkerDashboard'
+import { tokenManager } from './utils/api'
 
 function App() {
   const [currentView, setCurrentView] = useState('home')
   const [selectedUserType, setSelectedUserType] = useState(null)
+  const [user, setUser] = useState(null)
+  const [isAuthenticated, setIsAuthenticated] = useState(false)
+
+  // Check for existing authentication on mount
+  useEffect(() => {
+    const token = tokenManager.get()
+    if (token) {
+      // Get user data from localStorage (from registration)
+      const users = JSON.parse(localStorage.getItem('registeredUsers') || '[]')
+      const lastUser = users[users.length - 1]
+      if (lastUser) {
+        setUser(lastUser)
+        setIsAuthenticated(true)
+      }
+    }
+  }, [])
 
   const handleRegisterClick = () => {
     setCurrentView('userTypeSelection')
@@ -34,8 +53,18 @@ function App() {
 
   const handleRegistration = async (userData) => {
     // The API call will be handled by the individual registration components
+    // Set user as authenticated after successful registration
+    setUser(userData)
+    setIsAuthenticated(true)
     setCurrentView('home')
     setSelectedUserType(null)
+  }
+
+  const handleLogout = () => {
+    tokenManager.remove()
+    setUser(null)
+    setIsAuthenticated(false)
+    setCurrentView('home')
   }
 
   if (currentView === 'userTypeSelection') {
@@ -61,6 +90,27 @@ function App() {
           onBack={handleBackToSelection}
           onRegister={handleRegistration}
         />
+      )
+    }
+  }
+
+  // Show dashboard if user is authenticated
+  if (isAuthenticated && user) {
+    if (user.userType === 'landlord') {
+      return (
+        <>
+          <Navbar onRegisterClick={handleRegisterClick} isAuthenticated={true} onLogout={handleLogout} user={user} />
+          <LandlordDashboard user={user} onLogout={handleLogout} />
+          <Footer />
+        </>
+      )
+    } else if (user.userType === 'worker') {
+      return (
+        <>
+          <Navbar onRegisterClick={handleRegisterClick} isAuthenticated={true} onLogout={handleLogout} user={user} />
+          <WorkerDashboard user={user} onLogout={handleLogout} />
+          <Footer />
+        </>
       )
     }
   }

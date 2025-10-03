@@ -1,6 +1,6 @@
 import './Navbar.css'
 
-const Navbar = ({ onRegisterClick }) => {
+const Navbar = ({ onRegisterClick, isAuthenticated, onLogout, user }) => {
   return (
     <nav className="navbar">
       <div className="nav-container">
@@ -15,8 +15,17 @@ const Navbar = ({ onRegisterClick }) => {
           <li><a href="#contact">Contact</a></li>
         </ul>
         <div className="nav-buttons">
-          <button className="btn-secondary">Login</button>
-          <button className="btn-primary" onClick={onRegisterClick}>Register</button>
+          {isAuthenticated ? (
+            <>
+              <span className="user-greeting">Hi, {user?.firstName}!</span>
+              <button className="btn-primary" onClick={onLogout}>Logout</button>
+            </>
+          ) : (
+            <>
+              <button className="btn-secondary">Login</button>
+              <button className="btn-primary" onClick={onRegisterClick}>Register</button>
+            </>
+          )}
         </div>
       </div>
     </nav>
