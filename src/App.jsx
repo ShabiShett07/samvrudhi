@@ -86,11 +86,9 @@ function App() {
   }
 
   const handleServicesClick = () => {
-    // Navigate to home first, then scroll to services
     setCurrentView('home')
     setSelectedService(null)
     setSelectedUserType(null)
-    // Wait for DOM to update before scrolling
     setTimeout(() => {
       const servicesSection = document.getElementById('services')
       if (servicesSection) {
@@ -99,10 +97,56 @@ function App() {
     }, 100)
   }
 
+  const handleFeaturesClick = () => {
+    setCurrentView('home')
+    setSelectedService(null)
+    setSelectedUserType(null)
+    setTimeout(() => {
+      const featuresSection = document.getElementById('features')
+      if (featuresSection) {
+        featuresSection.scrollIntoView({ behavior: 'smooth' })
+      }
+    }, 100)
+  }
+
+  const handleAboutClick = () => {
+    setCurrentView('home')
+    setSelectedService(null)
+    setSelectedUserType(null)
+    setTimeout(() => {
+      const aboutSection = document.getElementById('about')
+      if (aboutSection) {
+        aboutSection.scrollIntoView({ behavior: 'smooth' })
+      }
+    }, 100)
+  }
+
+  const handleContactClick = () => {
+    setCurrentView('home')
+    setSelectedService(null)
+    setSelectedUserType(null)
+    setTimeout(() => {
+      const contactSection = document.getElementById('contact')
+      if (contactSection) {
+        contactSection.scrollIntoView({ behavior: 'smooth' })
+      }
+    }, 100)
+  }
+
   if (currentView === 'findWorkers') {
     return (
       <>
-        <Navbar onRegisterClick={handleRegisterClick} isAuthenticated={isAuthenticated} onLogout={handleLogout} user={user} onLogoClick={handleLogoClick} onServicesClick={handleServicesClick} />
+        <Navbar
+          onRegisterClick={handleRegisterClick}
+          isAuthenticated={isAuthenticated}
+          onLogout={handleLogout}
+          user={user}
+          onLogoClick={handleLogoClick}
+          onServicesClick={handleServicesClick}
+          onFeaturesClick={handleFeaturesClick}
+          onAboutClick={handleAboutClick}
+          onContactClick={handleContactClick}
+        />
         <FindWorkers onBack={handleBackFromFindWorkers} preSelectedService={selectedService} />
         <Footer />
       </>
@@ -141,7 +185,17 @@ function App() {
     if (user.userType === 'landlord') {
       return (
         <>
-          <Navbar onRegisterClick={handleRegisterClick} isAuthenticated={true} onLogout={handleLogout} user={user} onLogoClick={handleLogoClick} onServicesClick={handleServicesClick} />
+          <Navbar
+            onRegisterClick={handleRegisterClick}
+            isAuthenticated={true}
+            onLogout={handleLogout}
+            user={user}
+            onLogoClick={handleLogoClick}
+            onServicesClick={handleServicesClick}
+            onFeaturesClick={handleFeaturesClick}
+            onAboutClick={handleAboutClick}
+            onContactClick={handleContactClick}
+          />
           <LandlordDashboard user={user} onLogout={handleLogout} onFindWorkers={handleFindWorkers} />
           <Footer />
         </>
@@ -149,7 +203,17 @@ function App() {
     } else if (user.userType === 'worker') {
       return (
         <>
-          <Navbar onRegisterClick={handleRegisterClick} isAuthenticated={true} onLogout={handleLogout} user={user} onLogoClick={handleLogoClick} onServicesClick={handleServicesClick} />
+          <Navbar
+            onRegisterClick={handleRegisterClick}
+            isAuthenticated={true}
+            onLogout={handleLogout}
+            user={user}
+            onLogoClick={handleLogoClick}
+            onServicesClick={handleServicesClick}
+            onFeaturesClick={handleFeaturesClick}
+            onAboutClick={handleAboutClick}
+            onContactClick={handleContactClick}
+          />
           <WorkerDashboard user={user} onLogout={handleLogout} />
           <Footer />
         </>
@@ -159,7 +223,14 @@ function App() {
 
   return (
     <div className="App">
-      <Navbar onRegisterClick={handleRegisterClick} onLogoClick={handleLogoClick} onServicesClick={handleServicesClick} />
+      <Navbar
+        onRegisterClick={handleRegisterClick}
+        onLogoClick={handleLogoClick}
+        onServicesClick={handleServicesClick}
+        onFeaturesClick={handleFeaturesClick}
+        onAboutClick={handleAboutClick}
+        onContactClick={handleContactClick}
+      />
       <Hero onFindWorkers={handleFindWorkers} />
       <Services onFindWorkers={handleFindWorkers} />
       <Features />

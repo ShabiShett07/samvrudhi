@@ -1,15 +1,50 @@
 import './Navbar.css'
 
-const Navbar = ({ onRegisterClick, isAuthenticated, onLogout, user, onLogoClick, onServicesClick }) => {
+const Navbar = ({ onRegisterClick, isAuthenticated, onLogout, user, onLogoClick, onServicesClick, onFeaturesClick, onAboutClick, onContactClick }) => {
   const handleServicesClick = (e) => {
     e.preventDefault()
     if (onServicesClick) {
       onServicesClick()
     } else {
-      // Fallback to scrolling if on home page
       const servicesSection = document.getElementById('services')
       if (servicesSection) {
         servicesSection.scrollIntoView({ behavior: 'smooth' })
+      }
+    }
+  }
+
+  const handleFeaturesClick = (e) => {
+    e.preventDefault()
+    if (onFeaturesClick) {
+      onFeaturesClick()
+    } else {
+      const featuresSection = document.getElementById('features')
+      if (featuresSection) {
+        featuresSection.scrollIntoView({ behavior: 'smooth' })
+      }
+    }
+  }
+
+  const handleAboutClick = (e) => {
+    e.preventDefault()
+    if (onAboutClick) {
+      onAboutClick()
+    } else {
+      const aboutSection = document.getElementById('about')
+      if (aboutSection) {
+        aboutSection.scrollIntoView({ behavior: 'smooth' })
+      }
+    }
+  }
+
+  const handleContactClick = (e) => {
+    e.preventDefault()
+    if (onContactClick) {
+      onContactClick()
+    } else {
+      const contactSection = document.getElementById('contact')
+      if (contactSection) {
+        contactSection.scrollIntoView({ behavior: 'smooth' })
       }
     }
   }
@@ -23,9 +58,9 @@ const Navbar = ({ onRegisterClick, isAuthenticated, onLogout, user, onLogoClick,
         <ul className="nav-menu">
           <li><a href="#home" onClick={(e) => { e.preventDefault(); onLogoClick && onLogoClick() }}>Home</a></li>
           <li><a href="#services" onClick={handleServicesClick}>Services</a></li>
-          <li><a href="#features">Features</a></li>
-          <li><a href="#about">About</a></li>
-          <li><a href="#contact">Contact</a></li>
+          <li><a href="#features" onClick={handleFeaturesClick}>Features</a></li>
+          <li><a href="#about" onClick={handleAboutClick}>About</a></li>
+          <li><a href="#contact" onClick={handleContactClick}>Contact</a></li>
         </ul>
         <div className="nav-buttons">
           {isAuthenticated ? (
