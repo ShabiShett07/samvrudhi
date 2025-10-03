@@ -1,12 +1,29 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import './FindWorkers.css'
 import WorkerCard from './WorkerCard'
 
-const FindWorkers = ({ onBack }) => {
+const FindWorkers = ({ onBack, preSelectedService }) => {
   const [searchTerm, setSearchTerm] = useState('')
   const [selectedService, setSelectedService] = useState('All')
   const [selectedExperience, setSelectedExperience] = useState('All')
   const [priceRange, setPriceRange] = useState('All')
+
+  // Map service titles to worker service categories
+  const serviceMapping = {
+    'Planting & Seeding': 'Planting',
+    'Land Cultivation': 'Cultivation',
+    'Irrigation Systems': 'Irrigation',
+    'Harvesting': 'Harvesting',
+    'Pest & Weed Control': 'Pest Control',
+    'Equipment Maintenance': 'Equipment Repair'
+  }
+
+  useEffect(() => {
+    if (preSelectedService) {
+      const mappedService = serviceMapping[preSelectedService] || preSelectedService
+      setSelectedService(mappedService)
+    }
+  }, [preSelectedService])
 
   // Mock worker data
   const workers = [
@@ -14,85 +31,85 @@ const FindWorkers = ({ onBack }) => {
       id: 1,
       firstName: 'Rajesh',
       lastName: 'Kumar',
-      services: ['Plumbing', 'Electrical'],
+      services: ['Planting', 'Cultivation'],
       experience: 'experienced',
       hourlyRate: 350,
       rating: 4.8,
       totalJobs: 127,
       location: 'Bangalore',
       availability: 'full-time',
-      certifications: 'Licensed Plumber, Electrical Technician'
+      certifications: 'Agricultural Expert, Soil Management'
     },
     {
       id: 2,
       firstName: 'Priya',
       lastName: 'Sharma',
-      services: ['Gardening', 'Landscaping'],
+      services: ['Planting', 'Pest Control'],
       experience: 'expert',
       hourlyRate: 450,
       rating: 4.9,
       totalJobs: 215,
       location: 'Bangalore',
       availability: 'flexible',
-      certifications: 'Certified Horticulturist'
+      certifications: 'Certified Horticulturist, Organic Farming'
     },
     {
       id: 3,
       firstName: 'Amit',
       lastName: 'Patel',
-      services: ['Carpentry', 'Painting'],
+      services: ['Cultivation', 'Equipment Repair'],
       experience: 'intermediate',
       hourlyRate: 300,
       rating: 4.5,
       totalJobs: 89,
       location: 'Bangalore',
       availability: 'weekdays',
-      certifications: 'Carpentry Diploma'
+      certifications: 'Tractor Operation & Maintenance'
     },
     {
       id: 4,
       firstName: 'Sunita',
       lastName: 'Reddy',
-      services: ['Cleaning', 'Pest Control'],
+      services: ['Harvesting', 'Pest Control'],
       experience: 'experienced',
       hourlyRate: 250,
       rating: 4.7,
       totalJobs: 156,
       location: 'Bangalore',
       availability: 'full-time',
-      certifications: 'Hygiene & Sanitation Certificate'
+      certifications: 'Crop Management Certificate'
     },
     {
       id: 5,
       firstName: 'Vikram',
       lastName: 'Singh',
-      services: ['HVAC', 'Appliance Repair'],
+      services: ['Irrigation', 'Equipment Repair'],
       experience: 'expert',
       hourlyRate: 500,
       rating: 5.0,
       totalJobs: 342,
       location: 'Bangalore',
       availability: 'full-time',
-      certifications: 'HVAC Specialist, Electronics Engineer'
+      certifications: 'Irrigation Specialist, Water Management'
     },
     {
       id: 6,
       firstName: 'Lakshmi',
       lastName: 'Iyer',
-      services: ['Painting', 'Cleaning'],
+      services: ['Planting', 'Harvesting'],
       experience: 'beginner',
       hourlyRate: 200,
       rating: 4.3,
       totalJobs: 34,
       location: 'Bangalore',
       availability: 'weekends',
-      certifications: 'Basic Training Certificate'
+      certifications: 'Basic Farming Training'
     }
   ]
 
   const serviceOptions = [
-    'All', 'Plumbing', 'Electrical', 'Carpentry', 'Painting', 'Cleaning',
-    'Gardening', 'HVAC', 'Appliance Repair', 'Pest Control'
+    'All', 'Planting', 'Cultivation', 'Irrigation', 'Harvesting',
+    'Pest Control', 'Equipment Repair'
   ]
 
   const experienceOptions = ['All', 'beginner', 'intermediate', 'experienced', 'expert']

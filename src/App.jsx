@@ -18,6 +18,7 @@ function App() {
   const [selectedUserType, setSelectedUserType] = useState(null)
   const [user, setUser] = useState(null)
   const [isAuthenticated, setIsAuthenticated] = useState(false)
+  const [selectedService, setSelectedService] = useState(null)
 
   // Check for existing authentication on mount
   useEffect(() => {
@@ -68,11 +69,13 @@ function App() {
     setCurrentView('home')
   }
 
-  const handleFindWorkers = () => {
+  const handleFindWorkers = (serviceType = null) => {
+    setSelectedService(serviceType)
     setCurrentView('findWorkers')
   }
 
   const handleBackFromFindWorkers = () => {
+    setSelectedService(null)
     setCurrentView('home')
   }
 
@@ -80,7 +83,7 @@ function App() {
     return (
       <>
         <Navbar onRegisterClick={handleRegisterClick} isAuthenticated={isAuthenticated} onLogout={handleLogout} user={user} />
-        <FindWorkers onBack={handleBackFromFindWorkers} />
+        <FindWorkers onBack={handleBackFromFindWorkers} preSelectedService={selectedService} />
         <Footer />
       </>
     )

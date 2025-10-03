@@ -61,12 +61,12 @@ const Services = ({ onFindWorkers }) => {
                   <li key={idx}>✓ {feature}</li>
                 ))}
               </ul>
-              <button className="service-button" onClick={onFindWorkers}>Find Workers</button>
+              <button className="service-button" onClick={() => onFindWorkers(service.title)}>Find Workers</button>
             </div>
           ))}
         </div>
         <div className="services-footer">
-          <button className="view-more-button" onClick={onFindWorkers}>View More Services</button>
+          <button className="view-more-button" onClick={() => onFindWorkers()}>View More Services</button>
         </div>
       </div>
     </section>
