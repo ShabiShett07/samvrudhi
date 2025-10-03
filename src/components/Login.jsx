@@ -24,6 +24,23 @@ const Login = ({ onBack, onLogin }) => {
     setLoading(true)
 
     try {
+      // Check for admin credentials
+      if (formData.email === 'admin@samvrudhi.com' && formData.password === 'admin123') {
+        const adminUser = {
+          id: 'admin',
+          firstName: 'Admin',
+          lastName: 'User',
+          email: 'admin@samvrudhi.com',
+          userType: 'admin'
+        }
+
+        const token = `admin_token_${Date.now()}`
+        tokenManager.save(token)
+        alert('Welcome back, Admin!')
+        onLogin(adminUser)
+        return
+      }
+
       // Get registered users from localStorage
       const users = JSON.parse(localStorage.getItem('registeredUsers') || '[]')
 

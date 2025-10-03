@@ -12,6 +12,7 @@ import LandlordRegistration from './components/LandlordRegistration'
 import WorkerRegistration from './components/WorkerRegistration'
 import LandlordDashboard from './components/LandlordDashboard'
 import WorkerDashboard from './components/WorkerDashboard'
+import AdminDashboard from './components/AdminDashboard'
 import FindWorkers from './components/FindWorkers'
 import Login from './components/Login'
 import { tokenManager } from './utils/api'
@@ -212,7 +213,9 @@ function App() {
 
   // Show dashboard if user is authenticated
   if (isAuthenticated && user) {
-    if (user.userType === 'landlord') {
+    if (user.userType === 'admin') {
+      return <AdminDashboard onLogout={handleLogout} />
+    } else if (user.userType === 'landlord') {
       return (
         <>
           <Navbar
