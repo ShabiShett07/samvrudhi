@@ -139,7 +139,7 @@ const FindWorkers = ({ onBack }) => {
         <div className="search-bar">
           <input
             type="text"
-            placeholder="🔍 Search by name or service..."
+            placeholder="Search by name or service..."
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
             className="search-input"
