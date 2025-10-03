@@ -1,10 +1,10 @@
 import './Navbar.css'
 
-const Navbar = ({ onRegisterClick, isAuthenticated, onLogout, user }) => {
+const Navbar = ({ onRegisterClick, isAuthenticated, onLogout, user, onLogoClick }) => {
   return (
     <nav className="navbar">
       <div className="nav-container">
-        <div className="nav-logo">
+        <div className="nav-logo" onClick={onLogoClick} style={{ cursor: 'pointer' }}>
           <img src="/logo.png" alt="Samvrudhi" className="logo-image" />
         </div>
         <ul className="nav-menu">

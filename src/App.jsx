@@ -79,10 +79,16 @@ function App() {
     setCurrentView('home')
   }
 
+  const handleLogoClick = () => {
+    setCurrentView('home')
+    setSelectedService(null)
+    setSelectedUserType(null)
+  }
+
   if (currentView === 'findWorkers') {
     return (
       <>
-        <Navbar onRegisterClick={handleRegisterClick} isAuthenticated={isAuthenticated} onLogout={handleLogout} user={user} />
+        <Navbar onRegisterClick={handleRegisterClick} isAuthenticated={isAuthenticated} onLogout={handleLogout} user={user} onLogoClick={handleLogoClick} />
         <FindWorkers onBack={handleBackFromFindWorkers} preSelectedService={selectedService} />
         <Footer />
       </>
@@ -121,7 +127,7 @@ function App() {
     if (user.userType === 'landlord') {
       return (
         <>
-          <Navbar onRegisterClick={handleRegisterClick} isAuthenticated={true} onLogout={handleLogout} user={user} />
+          <Navbar onRegisterClick={handleRegisterClick} isAuthenticated={true} onLogout={handleLogout} user={user} onLogoClick={handleLogoClick} />
           <LandlordDashboard user={user} onLogout={handleLogout} onFindWorkers={handleFindWorkers} />
           <Footer />
         </>
@@ -129,7 +135,7 @@ function App() {
     } else if (user.userType === 'worker') {
       return (
         <>
-          <Navbar onRegisterClick={handleRegisterClick} isAuthenticated={true} onLogout={handleLogout} user={user} />
+          <Navbar onRegisterClick={handleRegisterClick} isAuthenticated={true} onLogout={handleLogout} user={user} onLogoClick={handleLogoClick} />
           <WorkerDashboard user={user} onLogout={handleLogout} />
           <Footer />
         </>
@@ -139,7 +145,7 @@ function App() {
 
   return (
     <div className="App">
-      <Navbar onRegisterClick={handleRegisterClick} />
+      <Navbar onRegisterClick={handleRegisterClick} onLogoClick={handleLogoClick} />
       <Hero onFindWorkers={handleFindWorkers} />
       <Services onFindWorkers={handleFindWorkers} />
       <Features />
